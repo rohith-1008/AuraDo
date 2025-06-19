@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraDo - Your Smart To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-theme"> <div class="container">
+        <h1><i class="fas fa-clipboard-list"></i> AuraDo</h1>
+
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <input type="date" id="dueDateInput" title="Set Due Date">
+            <button id="addTaskBtn" title="Add Task"><i class="fas fa-plus"></i> Add Task</button>
+        </div>
+
+        <div class="controls-section">
+            <div class="filter-buttons">
+                <button id="filterAll" class="active" title="Show All Tasks">All</button>
+                <button id="filterActive" title="Show Active Tasks">Active</button>
+                <button id="filterCompleted" title="Show Completed Tasks">Completed</button>
+            </div>
+            <button id="clearCompletedBtn" title="Clear All Completed Tasks"><i class="fas fa-trash-can"></i> Clear Completed</button>
+        </div>
+
+        <div class="sort-section">
+            <label for="sortTasks">Sort by:</label>
+            <select id="sortTasks">
+                <option value="added-desc">Recently Added</option>
+                <option value="added-asc">Oldest Added</option>
+                <option value="due-date-asc">Due Date (Soonest)</option>
+                <option value="due-date-desc">Due Date (Latest)</option>
+            </select>
+        </div>
+
+        <div class="task-summary">
+            <span id="activeTasksCount">Active: 0</span>
+            <span id="completedTasksCount">Completed: 0</span>
+            <span id="totalTasksCount">Total: 0</span>
+        </div>
+
+        <ul id="taskList">
+            </ul>
+
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <div id="customConfirmModal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <p id="confirmMessage"></p>
+                <div class="modal-actions">
+                    <button id="confirmYesBtn" class="confirm-yes-btn">Yes</button>
+                    <button id="confirmNoBtn" class="confirm-no-btn">No</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

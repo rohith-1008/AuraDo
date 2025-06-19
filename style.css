@@ -1,0 +1,697 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #e0f2f7; /* Lighter blue background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    box-sizing: border-box;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease; /* For theme toggle */
+}
+
+/* --- Container --- */
+.container {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 50px;
+    border: 1px solid #cce7ed; /* Subtle border */
+    position: relative; /* For theme toggle button positioning */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Heading --- */
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Darker heading color */
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+h1 .fas {
+    color: #3498db; /* Icon color */
+}
+
+/* --- Input Section --- */
+.input-section {
+    display: flex;
+    margin-bottom: 25px;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 12px 18px;
+    border: 1px solid #b3e0ff; /* Light blue border */
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    min-width: 150px; /* Ensure it doesn't get too small */
+}
+
+#dueDateInput {
+    padding: 12px 18px;
+    border: 1px solid #b3e0ff;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: #f7fcfc;
+    transition: all 0.3s ease;
+}
+
+#taskInput:focus, #dueDateInput:focus {
+    outline: none;
+    border-color: #3498db; /* Blue on focus */
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* --- Buttons (General) --- */
+button {
+    background-color: #3498db; /* Primary blue button */
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap; /* Prevent text wrapping inside button */
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+button:active {
+    transform: translateY(0);
+}
+
+/* --- Controls Section --- */
+.controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between filter buttons and clear completed */
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-buttons button {
+    background-color: #ecf0f1; /* Light gray for filter buttons */
+    color: #555;
+    padding: 8px 15px;
+    font-size: 0.95rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.filter-buttons button:hover {
+    background-color: #dbe4e6;
+}
+
+.filter-buttons button.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+#clearCompletedBtn {
+    background-color: #e74c3c; /* Red for clear completed */
+    padding: 8px 15px;
+    font-size: 0.95rem;
+}
+
+#clearCompletedBtn:hover {
+    background-color: #c0392b;
+}
+
+/* New: Sorting Section Styles */
+.sort-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.sort-section label {
+    font-weight: 500;
+}
+
+.sort-section select {
+    padding: 8px 12px;
+    border: 1px solid #b3e0ff;
+    border-radius: 8px;
+    background-color: #f7fcfc;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    -webkit-appearance: none; /* Remove default browser styling for dropdown */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2C114.7L154.2%2C247.5c-4.6%2C4.6-11.4%2C4.6-16%2C0L5.3%2C114.7c-4.6-4.6-4.6-11.4%2C0-16l14.1-14.1c4.6-4.6%2C11.4-4.6%2C16%2C0l110.1%2C110.1c4.6%2C4.6%2C11.4%2C4.6%2C16%2C0l110.1-110.1c4.6-4.6%2C11.4-4.6%2C16%2C0l14.1%2C14.1C291.6%2C103.3%2C291.6%2C110.1%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px;
+    padding-right: 30px; /* Make space for the arrow */
+}
+
+.sort-section select:hover {
+    border-color: #3498db;
+}
+.sort-section select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* --- Task Summary Counts --- */
+.task-summary {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.task-summary span {
+    font-weight: 500;
+}
+
+/* --- Task List Items --- */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#taskList li {
+    background-color: #fcfcfc;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: grab;
+    opacity: 1; /* For animations */
+    transform: translateY(0); /* For animations */
+}
+
+/* Animation for task entry/exit */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+        margin-bottom: -50px; /* Collapse space */
+    }
+}
+
+#taskList li.adding {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+#taskList li.removing {
+    animation: slideOut 0.3s ease-out forwards;
+}
+
+
+#taskList li.dragging {
+    opacity: 0.5;
+    border: 2px dashed #3498db;
+    box-shadow: none;
+}
+
+#taskList li span {
+    flex-grow: 1;
+    color: #444;
+    font-size: 1.05rem;
+    word-break: break-word;
+    cursor: pointer;
+    margin-right: 15px; /* Space between text and due date/buttons */
+}
+
+/* Due Date Styles */
+#taskList li .due-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-left: 10px;
+    white-space: nowrap; /* Prevent due date from wrapping */
+}
+
+#taskList li .due-date.overdue {
+    color: #e74c3c; /* Red for overdue */
+    font-weight: bold;
+}
+
+
+/* Styles for the "completed" tasks */
+#taskList li.completed {
+    background-color: #eaf7f7; /* Lighter background for completed */
+    border-color: #aed6e2;
+}
+
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #888;
+    font-style: italic;
+}
+
+#taskList li div { /* Container for buttons */
+    display: flex;
+    gap: 8px;
+    margin-left: 15px; /* Space from text/due date and buttons */
+}
+
+#taskList li button {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#taskList li .complete-btn {
+    color: #27ae60; /* Green for complete */
+}
+
+#taskList li .complete-btn:hover {
+    background-color: rgba(39, 174, 96, 0.15);
+}
+
+#taskList li .delete-btn {
+    color: #c0392b; /* Red for delete */
+}
+
+#taskList li .delete-btn:hover {
+    background-color: rgba(192, 57, 43, 0.15);
+}
+
+/* --- Dark Mode Toggle Button --- */
+.theme-toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+    z-index: 10;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- Dark Mode Styles --- */
+body.dark-theme {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-theme .container {
+    background-color: #34495e;
+    border-color: #4a667b;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme h1 {
+    color: #ecf0f1;
+}
+
+body.dark-theme h1 .fas {
+    color: #85c1e9;
+}
+
+body.dark-theme #taskInput,
+body.dark-theme #dueDateInput {
+    background-color: #2a3d4f;
+    border-color: #557088;
+    color: #ecf0f1;
+}
+
+body.dark-theme #taskInput:focus,
+body.dark-theme #dueDateInput:focus {
+    border-color: #85c1e9;
+    box-shadow: 0 0 0 4px rgba(133, 193, 233, 0.2);
+}
+
+body.dark-theme #taskInput::placeholder {
+    color: #aebcbe;
+}
+
+body.dark-theme button {
+    background-color: #3498db;
+    color: white;
+}
+body.dark-theme button:hover {
+    background-color: #2980b9;
+}
+
+body.dark-theme .controls-section {
+    border-bottom-color: #4a667b;
+}
+
+body.dark-theme .filter-buttons button {
+    background-color: #4a667b;
+    color: #ecf0f1;
+    border-color: #557088;
+}
+
+body.dark-theme .filter-buttons button:hover {
+    background-color: #557088;
+}
+
+body.dark-theme .filter-buttons button.active {
+    background-color: #85c1e9;
+    border-color: #85c1e9;
+    color: #2c3e50;
+}
+
+body.dark-theme #clearCompletedBtn {
+    background-color: #c0392b;
+}
+body.dark-theme #clearCompletedBtn:hover {
+    background-color: #a02c20;
+}
+
+body.dark-theme .sort-section {
+    color: #aebcbe;
+    border-bottom-color: #4a667b;
+}
+
+body.dark-theme .sort-section select {
+    background-color: #2a3d4f;
+    border-color: #557088;
+    color: #ecf0f1;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23aebcbe%22%20d%3D%22M287%2C114.7L154.2%2C247.5c-4.6%2C4.6-11.4%2C4.6-16%2C0L5.3%2C114.7c-4.6-4.6-4.6-11.4%2C0-16l14.1-14.1c4.6-4.6%2C11.4-4.6%2C16%2C0l110.1%2C110.1c4.6%2C4.6%2C11.4%2C4.6%2C16%2C0l110.1-110.1c4.6-4.6%2C11.4-4.6%2C16%2C0l14.1%2C14.1C291.6%2C103.3%2C291.6%2C110.1%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E'); /* Darker custom arrow */
+}
+
+body.dark-theme .sort-section select:focus {
+    border-color: #85c1e9;
+    box-shadow: 0 0 0 3px rgba(133, 193, 233, 0.2);
+}
+
+body.dark-theme .task-summary {
+    color: #aebcbe;
+    border-bottom-color: #4a667b;
+}
+
+body.dark-theme #taskList li {
+    background-color: #4a667b;
+    border-color: #557088;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme #taskList li span {
+    color: #ecf0f1;
+}
+
+body.dark-theme #taskList li .due-date {
+    color: #bdc3c7;
+}
+
+body.dark-theme #taskList li .due-date.overdue {
+    color: #e74c3c;
+}
+
+body.dark-theme #taskList li.completed {
+    background-color: #557088;
+    border-color: #6a8ba6;
+}
+
+body.dark-theme #taskList li.completed span {
+    color: #b0b8bc;
+}
+
+body.dark-theme #taskList li .complete-btn {
+    color: #2ecc71;
+}
+body.dark-theme #taskList li .complete-btn:hover {
+    background-color: rgba(46, 204, 113, 0.2);
+}
+
+body.dark-theme #taskList li .delete-btn {
+    color: #e74c3c;
+}
+body.dark-theme #taskList li .delete-btn:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+}
+
+body.dark-theme .theme-toggle-btn {
+    background-color: #557088;
+    color: #ecf0f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+body.dark-theme .theme-toggle-btn:hover {
+    background-color: #6a8ba6;
+}
+
+/* --- Custom Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(-20px); /* For animation */
+    opacity: 0; /* For animation */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-actions button {
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.confirm-yes-btn {
+    background-color: #28a745; /* Green for yes */
+}
+.confirm-yes-btn:hover {
+    background-color: #218838;
+}
+
+.confirm-no-btn {
+    background-color: #007bff; /* Blue for no */
+}
+.confirm-no-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Dark mode for modal */
+body.dark-theme .modal-content {
+    background-color: #4a667b;
+    color: #ecf0f1;
+}
+
+body.dark-theme .modal-content p {
+    color: #ecf0f1;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    .container {
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .input-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #taskInput, #dueDateInput, #addTaskBtn {
+        width: 100%;
+        margin-right: 0;
+    }
+    #addTaskBtn {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+
+    .controls-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .filter-buttons {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .filter-buttons button {
+        flex: 1;
+        margin: 0 5px;
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    #clearCompletedBtn {
+        width: 100%;
+        margin-top: 5px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .sort-section {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 8px;
+    }
+    .sort-section select {
+        width: 100%;
+    }
+
+    .task-summary {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    #taskList li {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #taskList li span {
+        width: 100%;
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
+
+    #taskList li .due-date {
+        margin-left: 0; /* No margin on small screens */
+        width: 100%;
+        text-align: right; /* Align due date to right */
+    }
+
+    #taskList li div {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .theme-toggle-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
